@@ -7,6 +7,9 @@ namespace Version_1_C
     [Serializable()] 
     public class clsArtistList : SortedList
     {
+
+        private const string _FileName = "gallery.xml";
+
         public void EditArtist(string prKey)
         {
             clsArtist lcArtist;
@@ -43,5 +46,46 @@ namespace Version_1_C
             }
             return lcTotal;
         }
+
+        public void Save()
+        {
+            try
+            {
+                System.IO.FileStream lcFileStream = new System.IO.FileStream(_FileName, System.IO.FileMode.Create);
+                System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
+                    new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
+
+                lcFormatter.Serialize(lcFileStream, this);
+                lcFileStream.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "File Save Error");
+            }
+        }
+
+        public static clsArtistList Retrieve()
+        {
+            clsArtistList lcArtistList;
+            try
+            {
+                System.IO.FileStream lcFileStream = new System.IO.FileStream(_FileName, System.IO.FileMode.Open);
+                System.Runtime.Serialization.Formatters.Soap.SoapFormatter lcFormatter =
+                    new System.Runtime.Serialization.Formatters.Soap.SoapFormatter();
+
+                lcArtistList = (clsArtistList)lcFormatter.Deserialize(lcFileStream);
+                lcFileStream.Close();
+                return lcArtistList;
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "File Retrieve Error");
+                lcArtistList = new clsArtistList();
+                return lcArtistList;
+            }
+        }
     }
+
+
 }

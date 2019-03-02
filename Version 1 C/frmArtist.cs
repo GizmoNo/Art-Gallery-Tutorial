@@ -92,7 +92,7 @@ namespace Version_1_C
                 return true;
         }
 
-        private void lstworks_doubleclick(object sender, EventArgs e)
+        private void lstWorks_DoubleClick(object sender, EventArgs e)
         {
             int lcIndex = lstWorks.SelectedIndex;
             if (lcIndex >= 0)
@@ -102,7 +102,7 @@ namespace Version_1_C
             }
         }
 
-        private void rbbydate_checkedchanged(object sender, EventArgs e)
+        private void rbByDate_CheckedChanged(object sender, EventArgs e)
         {
             sortOrder = Convert.ToByte(rbByDate.Checked);
             UpdateDisplay();
