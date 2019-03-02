@@ -9,7 +9,10 @@ namespace Version_1_C
     {
         private static clsNameComparer theNameComparer = new clsNameComparer();
         private static clsDateComparer theDateComparer = new clsDateComparer();
-        
+        private byte sortOrder;
+
+        public byte SortOrder { get => sortOrder; set => sortOrder = value; }
+
         public void AddWork()
         {
             clsWork lcWork = clsWork.NewWork();

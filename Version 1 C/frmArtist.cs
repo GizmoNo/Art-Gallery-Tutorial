@@ -17,12 +17,12 @@ namespace Version_1_C
 
         private clsArtistList _ArtistList;
         private clsWorksList _WorksList;
-        private byte sortOrder; // 0 = Name, 1 = Date
+        private byte _SortOrder; // 0 = Name, 1 = Date
 
         private void UpdateDisplay()
         {
             txtName.Enabled = txtName.Text == "";
-            if (sortOrder == 0)
+            if (_SortOrder == 0)
             {
                 _WorksList.SortByName();
                 rbByName.Checked = true;
@@ -38,7 +38,7 @@ namespace Version_1_C
             lblTotal.Text = Convert.ToString(_WorksList.GetTotalValue());
         }
 
-        public void SetDetails(string prName, string prSpeciality, string prPhone, byte prSortOrder,
+        public void SetDetails(string prName, string prSpeciality, string prPhone,
                                clsWorksList prWorksList, clsArtistList prArtistList)
         {
             txtName.Text = prName;
@@ -46,16 +46,17 @@ namespace Version_1_C
             txtPhone.Text = prPhone;
             _ArtistList = prArtistList;
             _WorksList = prWorksList;
-            sortOrder = prSortOrder;
+            _SortOrder = _WorksList.SortOrder;
             UpdateDisplay();
         }
 
-        public void GetDetails(ref string prName, ref string prSpeciality, ref string prPhone, ref byte prSortOrder)
+        public void GetDetails(ref string prName, ref string prSpeciality, ref string prPhone)
         {
             prName = txtName.Text;
             prSpeciality = txtSpeciality.Text;
             prPhone = txtPhone.Text;
-            prSortOrder = sortOrder;
+            _SortOrder = _WorksList.SortOrder;
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -104,7 +105,7 @@ namespace Version_1_C
 
         private void rbByDate_CheckedChanged(object sender, EventArgs e)
         {
-            sortOrder = Convert.ToByte(rbByDate.Checked);
+            _SortOrder = Convert.ToByte(rbByDate.Checked);
             UpdateDisplay();
         }
 
