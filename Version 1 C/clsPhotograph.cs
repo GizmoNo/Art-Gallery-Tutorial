@@ -6,9 +6,9 @@ namespace Version_1_C
     [Serializable()]
     public class clsPhotograph : clsWork
     {
-        private float theWidth;
-        private float theHeight;
-        private string theType;
+        private float _Width;
+        private float _Height;
+        private string _Type;
 
         [NonSerialized()]
         private static frmPhotograph sculptureDialog;
@@ -19,10 +19,10 @@ namespace Version_1_C
             {
                 sculptureDialog = new frmPhotograph();
             }
-            sculptureDialog.SetDetails(_Name, theDate, theValue, theWidth, theHeight, theType);
+            sculptureDialog.SetDetails(_Name, _Date, _Value, _Width, _Height, _Type);
             if (sculptureDialog.ShowDialog() == DialogResult.OK)
             {
-                sculptureDialog.GetDetails(ref _Name, ref theDate, ref theValue, ref theWidth, ref theHeight, ref theType);
+                sculptureDialog.GetDetails(ref _Name, ref _Date, ref _Value, ref _Width, ref _Height, ref _Type);
             }
 
         }

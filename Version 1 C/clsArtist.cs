@@ -5,43 +5,43 @@ namespace Version_1_C
     [Serializable()] 
     public class clsArtist
     {
-        private string name;
-        private string speciality;
-        private string phone;
+        private string _Name;
+        private string _Speciality;
+        private string _Phone;
         
-        private decimal theTotalValue;
+        private decimal _TotalValue;
 
-        private clsWorksList theWorksList;
-        private clsArtistList theArtistList;
+        private clsWorksList lcWorksList;
+        private clsArtistList lcArtistList;
         
-        private static frmArtist artistDialog = new frmArtist();
-        private byte sortOrder;
+        private static frmArtist lcArtistDialog = new frmArtist();
+        private byte _SortOrder;
 
         public clsArtist(clsArtistList prArtistList)
         {
-            theWorksList = new clsWorksList();
-            theArtistList = prArtistList;
+            lcWorksList = new clsWorksList();
+            lcArtistList = prArtistList;
             EditDetails();
         }
         
         public void EditDetails()
         {
-            artistDialog.SetDetails(name, speciality, phone, sortOrder, theWorksList, theArtistList);
-            if (artistDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            lcArtistDialog.SetDetails(_Name, _Speciality, _Phone, _SortOrder, lcWorksList, lcArtistList);
+            if (lcArtistDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                artistDialog.GetDetails(ref name, ref speciality, ref phone, ref sortOrder);
-                theTotalValue = theWorksList.GetTotalValue();
+                lcArtistDialog.GetDetails(ref _Name, ref _Speciality, ref _Phone, ref _SortOrder);
+                _TotalValue = lcWorksList.GetTotalValue();
             }
         }
 
         public string GetKey()
         {
-            return name;
+            return _Name;
         }
 
         public decimal GetWorksValue()
         {
-            return theTotalValue;
+            return _TotalValue;
         }
     }
 }
