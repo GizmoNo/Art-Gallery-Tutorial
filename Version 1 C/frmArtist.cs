@@ -47,14 +47,21 @@ namespace Version_1_C
                 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            
+            MessageBox.Show("Are you sure?", "Deleting work", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             _WorksList.DeleteWork(lstWorks.SelectedIndex);
             updateDisplay();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            _WorksList.AddWork();
-            updateDisplay();
+            string lcReply = new InputBox(clsWork.FACTORY_PROMPT).Answer;
+            if (!string.IsNullOrEmpty(lcReply))
+            {
+                _WorksList.AddWork(lcReply[0]);
+                updateDisplay();
+            }
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -83,11 +90,15 @@ namespace Version_1_C
         private void lstWorks_DoubleClick(object sender, EventArgs e)
         {
             int lcIndex = lstWorks.SelectedIndex;
-            if (lcIndex >= 0)
-            {
+                        
                 _WorksList.EditWork(lcIndex);
+                if(clsCheckErrorMsg.MsgTrue == false)
+                {
+                    MessageBox.Show("Sorry no work selected please select the work you wish to edit");
+                    clsCheckErrorMsg.MsgTrue = true;
+                }
                 updateDisplay();
-            }
+           
         }
 
         private void rbByDate_CheckedChanged(object sender, EventArgs e)

@@ -5,9 +5,14 @@ namespace Version_1_C
     [Serializable()] 
     public abstract class clsWork
     {
-        protected string _Name;
-        protected DateTime _Date = DateTime.Now;
-        protected decimal _Value;
+        private string name;
+        private DateTime date = DateTime.Now;
+        private decimal value;
+        public static readonly string FACTORY_PROMPT = "Enter P for Painting, S for Sculpture and H for Photograph";
+
+        public string Name { get => name; set => name = value; }
+        public DateTime Date { get => date; set => date = value; }
+        public decimal Value { get => value; set => this.value = value; }
 
         public clsWork()
         {
@@ -16,49 +21,35 @@ namespace Version_1_C
 
         public abstract void EditDetails();
 
-         public static clsWork NewWork()
+         public static clsWork NewWork(char prChoice)
          {
-             char lcReply;
-             InputBox inputBox = new InputBox("Enter P for Painting, S for Sculpture and H for Photograph");
+             //char lcReply;
+             //InputBox inputBox = new InputBox("Enter P for Painting, S for Sculpture and H for Photograph");
              //inputBox.ShowDialog();
              //if (inputBox.getAction() == true)
-             if (inputBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-             {
-                 lcReply = Convert.ToChar(inputBox.getAnswer());
+             //if (inputBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+             //{
+                 //lcReply = Convert.ToChar(inputBox.getAnswer());
 
-                 switch (char.ToUpper(lcReply))
+                 switch (char.ToUpper(prChoice))
                  {
                      case 'P': return new clsPainting();
                      case 'S': return new clsSculpture();
                      case 'H': return new clsPhotograph();
                      default: return null;
                  }
-             }
-             else
-             {
-                 inputBox.Close();
-                 return null;
-             }
+             //}
+            // else
+             //{
+               //  inputBox.Close();
+            //     return null;
+             //}
          }
 
         public override string ToString()
         {
-            return _Name + "\t" + _Date.ToShortDateString();  
-        }
-        
-        public string GetName()
-        {
-            return _Name;
-        }
-
-        public DateTime GetDate()
-        {
-            return _Date;
-        }
-
-        public decimal GetValue()
-        {
-            return _Value;
+            return Name + "\t" + Date.ToShortDateString();  
         }
     }
+        
 }

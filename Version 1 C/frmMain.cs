@@ -34,25 +34,49 @@ namespace Version_1_C
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _ArtistList.NewArtist();
+            if(clsCheckErrorMsg.MsgTrue == true)
+            {
+                MessageBox.Show("Artist added!");
+            }
+            else
+            {
+                MessageBox.Show("Duplicate Key!");
+            }
             updateDisplay();
         }
 
         private void lstArtists_DoubleClick(object sender, EventArgs e)
         {
             string lcKey;
-
+            
             lcKey = Convert.ToString(lstArtists.SelectedItem);
             if (lcKey != null)
             {
                 _ArtistList.EditArtist(lcKey);
+                if(clsCheckErrorMsg.MsgTrue == false)
+                {
+                    clsCheckErrorMsg.MsgTrue = true;
+                    MessageBox.Show("Sorry no artist by this name");
+                }
+                              
                 updateDisplay();
+                
+                
             }
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
             _ArtistList.Save();
-            Close();
+            if(clsCheckErrorMsg.MsgTrue == false)
+            {
+                MessageBox.Show("File Save Error");
+            }
+            else
+            {
+                Close();
+            }
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -73,6 +97,10 @@ namespace Version_1_C
         private void frmMain_Load(object sender, EventArgs e)
         {
             _ArtistList = clsArtistList.Retrieve();
+            if (clsCheckErrorMsg.MsgTrue == false)
+            {
+                MessageBox.Show("File Retrieve Error");
+            }
             updateDisplay();
         }
     }

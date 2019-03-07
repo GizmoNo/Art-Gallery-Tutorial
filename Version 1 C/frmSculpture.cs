@@ -17,23 +17,40 @@ namespace Version_1_C
             InitializeComponent();
         }
 
-        public virtual void SetDetails(string prName, DateTime prDate, decimal prValue,
-                                       float prWeight, string prMaterial)
+        protected override void updateForm()
         {
-            base.SetDetails(prName, prDate, prValue);
-            txtWeight.Text = Convert.ToString(prWeight);
-            txtMaterial.Text = Convert.ToString(prMaterial);
+            base.updateForm();
+            clsSculpture lcWork = (clsSculpture)_Work;
+            txtWeight.Text = lcWork.Weight.ToString();
+            txtMaterial.Text = lcWork.Material;
             
         }
 
-        public virtual void GetDetails(ref string prName, ref DateTime prDate, ref decimal prValue,
-                                       ref float prWeight, ref string prMaterial)
+        protected override void pushData()
         {
-            base.GetDetails(ref prName, ref prDate, ref prValue);
-            prWeight = Convert.ToSingle(txtWeight.Text);
-            prMaterial = Convert.ToString(txtMaterial.Text);
+            base.pushData();
+            clsSculpture lcWork = (clsSculpture)_Work;
+            lcWork.Weight = Single.Parse(txtWeight.Text);
+            lcWork.Material = txtMaterial.Text;
             
         }
+        //public virtual void SetDetails(string prName, DateTime prDate, decimal prValue,
+        //                               float prWeight, string prMaterial)
+        //{
+        //    base.SetDetails(prName, prDate, prValue);
+        //    txtWeight.Text = Convert.ToString(prWeight);
+        //    txtMaterial.Text = Convert.ToString(prMaterial);
+
+        //}
+
+        //public virtual void GetDetails(ref string prName, ref DateTime prDate, ref decimal prValue,
+        //                               ref float prWeight, ref string prMaterial)
+        //{
+        //    base.GetDetails(ref prName, ref prDate, ref prValue);
+        //    prWeight = Convert.ToSingle(txtWeight.Text);
+        //    prMaterial = Convert.ToString(txtMaterial.Text);
+
+        //}
 
     }
 }

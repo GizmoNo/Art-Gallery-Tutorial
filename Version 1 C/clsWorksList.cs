@@ -1,11 +1,12 @@
 using System;
-using System.Collections;
-using System.Windows.Forms;
+using System.Collections.Generic;
+
+
 
 namespace Version_1_C
 {
     [Serializable()] 
-    public class clsWorksList : ArrayList
+    public class clsWorksList : List<clsWork>
     {
         private static clsNameComparer theNameComparer = new clsNameComparer();
         private static clsDateComparer theDateComparer = new clsDateComparer();
@@ -13,23 +14,20 @@ namespace Version_1_C
 
         public byte SortOrder { get => sortOrder; set => sortOrder = value; }
 
-        public void AddWork()
+        public void AddWork(char prChoice)
         {
-            clsWork lcWork = clsWork.NewWork();
+            clsWork lcWork = clsWork.NewWork(prChoice);
             if (lcWork != null)
             {
                 Add(lcWork);
             }
         }
-       
+        
         public void DeleteWork(int prIndex)
         {
             if (prIndex >= 0 && prIndex < this.Count)
             {
-                if (MessageBox.Show("Are you sure?", "Deleting work", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    this.RemoveAt(prIndex);
-                }
+                this.RemoveAt(prIndex);
             }
         }
         
@@ -37,12 +35,12 @@ namespace Version_1_C
         {
             if (prIndex >= 0 && prIndex < this.Count)
             {
-                clsWork lcWork = (clsWork)this[prIndex];
+                clsWork lcWork = this[prIndex];
                 lcWork.EditDetails();
             }
             else
             {
-                MessageBox.Show("Sorry no work selected #" + Convert.ToString(prIndex));
+                clsCheckErrorMsg.MsgTrue = false;
             }
         }
 
@@ -51,7 +49,7 @@ namespace Version_1_C
             decimal lcTotal = 0;
             foreach (clsWork lcWork in this)
             {
-                lcTotal += lcWork.GetValue();
+                lcTotal += lcWork.Value;
             }
             return lcTotal;
         }

@@ -10,7 +10,9 @@ namespace Version_1_C
 {
     public partial class InputBox : Form
     {
-        private string answer;
+        private string _Answer;
+
+        
 
         public InputBox(string question)
         {
@@ -18,13 +20,14 @@ namespace Version_1_C
             lblQuestion.Text = question;
             lblError.Text = "";
             txtAnswer.Focus();
+            ShowDialog();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (txtAnswer.Text.Length > 0 && txtAnswer.Text.Length < 2)
             {
-                answer = txtAnswer.Text;
+                _Answer = txtAnswer.Text;
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -40,9 +43,7 @@ namespace Version_1_C
             Close();
         }
 
-        public string getAnswer()
-        {
-            return answer;
-        }
+        
+        public string Answer { get => _Answer; }
     }
 }

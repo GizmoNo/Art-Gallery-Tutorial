@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+
 
 namespace Version_1_C
 {
@@ -9,15 +9,27 @@ namespace Version_1_C
     {
 
         private const string _FileName = "galleryV2.xml";
+        
 
         public void EditArtist(string prKey)
         {
             clsArtist lcArtist;
-            lcArtist = this[prKey];
-            if (lcArtist != null)
-                lcArtist.EditDetails();
-            else
-                MessageBox.Show("Sorry no artist by this name");
+            try
+            {
+                lcArtist = this[prKey];
+                if (lcArtist != null)
+                    lcArtist.EditDetails();
+            }
+            catch (Exception)
+            {
+                //MsgTrue = false;
+                clsCheckErrorMsg.MsgTrue = false;
+            }
+           
+            
+                
+                
+                
         }
        
         public void NewArtist()
@@ -28,12 +40,14 @@ namespace Version_1_C
                 if (lcArtist.Name != "")
                 {
                     Add(lcArtist.Name, lcArtist);
-                    MessageBox.Show("Artist added!");
+                    clsCheckErrorMsg.MsgTrue = true;
+                    
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Duplicate Key!");
+                clsCheckErrorMsg.MsgTrue = false;
+                
             }
         }
         
@@ -60,7 +74,8 @@ namespace Version_1_C
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "File Save Error");
+                clsCheckErrorMsg.MsgTrue = false;
+                
             }
         }
 
@@ -80,11 +95,15 @@ namespace Version_1_C
 
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "File Retrieve Error");
+                               
+                
                 lcArtistList = new clsArtistList();
+                clsCheckErrorMsg.MsgTrue = false;
                 return lcArtistList;
             }
         }
+
+        
     }
 
 
