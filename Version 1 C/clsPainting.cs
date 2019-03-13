@@ -10,8 +10,11 @@ namespace Version_1_C
         private float _Height;
         private string _Type;
 
-        [NonSerialized()]
-        private frmPainting _paintDialog;
+        public delegate void LoadPaintingFormDelegate(clsPainting prPainting);
+        public static LoadPaintingFormDelegate LoadPaintingForm;
+
+        
+        
 
         public float Width { get => _Width; set => _Width = value; }
         public float Height { get => _Height; set => _Height = value; }
@@ -19,9 +22,11 @@ namespace Version_1_C
 
         public override void EditDetails()
         {
-            if (_paintDialog == null)
-                _paintDialog = frmPainting.Painting;
-           _paintDialog.SetDetails(this);
+
+            LoadPaintingForm(this);
+           // if (_paintDialog == null)
+           //     _paintDialog = frmPainting.Painting;
+           //_paintDialog.SetDetails(this);
             
             
         }

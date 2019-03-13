@@ -11,7 +11,7 @@ namespace Version_1_C
     public partial class frmPhotograph : Version_1_C.frmWork
     {
 
-        public static readonly frmPhotograph Photograph = new frmPhotograph();
+        public static readonly frmPhotograph Instance = new frmPhotograph();
 
         private frmPhotograph()
         {
@@ -34,6 +34,11 @@ namespace Version_1_C
             lcWork.Width = Single.Parse(txtWidth.Text);
             lcWork.Height = Single.Parse(txtHeight.Text);
             lcWork.Type = txtType.Text;
+        }
+
+        public static void Run(clsPhotograph prPhotograph)
+        {
+            frmPhotograph.Instance.SetDetails(prPhotograph);
         }
 
 

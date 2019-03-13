@@ -11,7 +11,7 @@ namespace Version_1_C
     public partial class frmSculpture : Version_1_C.frmWork
     {
 
-        public static readonly frmSculpture Sculpture = new frmSculpture();
+        public static readonly frmSculpture Instance = new frmSculpture();
 
         private frmSculpture()
         {
@@ -34,6 +34,11 @@ namespace Version_1_C
             lcWork.Weight = Single.Parse(txtWeight.Text);
             lcWork.Material = txtMaterial.Text;
             
+        }
+
+        public static void Run(clsSculpture prSculpture)
+        {
+            frmSculpture.Instance.SetDetails(prSculpture);
         }
         //public virtual void SetDetails(string prName, DateTime prDate, decimal prValue,
         //                               float prWeight, string prMaterial)

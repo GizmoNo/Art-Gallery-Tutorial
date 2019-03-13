@@ -9,6 +9,9 @@ namespace Version_1_C
         private float _Weight;
         private string _Material;
 
+        public delegate void LoadSculptureFormDelegate(clsSculpture prSculpture);
+        public static LoadSculptureFormDelegate LoadSculptureForm;
+
         [NonSerialized()]
         private frmSculpture _sculptureDialog;
 
@@ -17,10 +20,8 @@ namespace Version_1_C
 
         public override void EditDetails()
         {
-            if ( _sculptureDialog == null)
-                 _sculptureDialog = frmSculpture.Sculpture;
-            _sculptureDialog.SetDetails(this);
-            
+            LoadSculptureForm(this);
+
         }
         
                  

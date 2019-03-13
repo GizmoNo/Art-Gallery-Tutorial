@@ -11,7 +11,7 @@ namespace Version_1_C
     public partial class frmPainting : Version_1_C.frmWork
     {
 
-        public static readonly frmPainting Painting = new frmPainting();
+        public static readonly frmPainting Instance = new frmPainting();
 
         private frmPainting()
         {
@@ -34,6 +34,11 @@ namespace Version_1_C
             lcWork.Width = Single.Parse(txtWidth.Text);
             lcWork.Height = Single.Parse(txtHeight.Text);
             lcWork.Type = txtType.Text;
+        }
+
+        public static void Run(clsPainting prPainting)
+        {
+            frmPainting.Instance.SetDetails(prPainting);
         }
 
 
