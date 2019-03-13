@@ -13,6 +13,10 @@ namespace Version_1_C
 
             return lcDateX.CompareTo(lcDateY);
         }
+
+        private clsDateComparer() { }
+
+        public static readonly clsDateComparer DateCompare = new clsDateComparer();
         //public int Compare(Object x, Object y)
         //{
         //    clsWork lcWorkX = (clsWork)x;

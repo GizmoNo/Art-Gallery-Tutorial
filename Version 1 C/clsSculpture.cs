@@ -10,7 +10,7 @@ namespace Version_1_C
         private string _Material;
 
         [NonSerialized()]
-        private static frmSculpture _sculptureDialog;
+        private frmSculpture _sculptureDialog;
 
         public float Weight { get => _Weight; set => _Weight = value; }
         public string Material { get => _Material; set => _Material = value; }
@@ -18,7 +18,7 @@ namespace Version_1_C
         public override void EditDetails()
         {
             if ( _sculptureDialog == null)
-                 _sculptureDialog = new frmSculpture();
+                 _sculptureDialog = frmSculpture.Sculpture;
             _sculptureDialog.SetDetails(this);
             
         }

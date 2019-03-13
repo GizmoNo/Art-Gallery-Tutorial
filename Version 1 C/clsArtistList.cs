@@ -8,7 +8,7 @@ namespace Version_1_C
     public class clsArtistList : SortedList<string, clsArtist>
     {
 
-        private const string _FileName = "galleryV2.xml";
+        private const string _FileName = "galleryV3.xml";
         
 
         public void EditArtist(string prKey)

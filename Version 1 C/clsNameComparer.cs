@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Version_1_C
 {
-    class clsNameComparer : IComparer<clsWork>
+    sealed class clsNameComparer : IComparer<clsWork>
     {
         public int Compare(clsWork x, clsWork y)
         {
@@ -12,5 +12,10 @@ namespace Version_1_C
 
             return lcNameX.CompareTo(lcNameY);
         }
+
+        private clsNameComparer() { }
+
+        public static readonly clsNameComparer NameCompare = new clsNameComparer();
+
     }
 }

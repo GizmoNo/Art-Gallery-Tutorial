@@ -8,8 +8,6 @@ namespace Version_1_C
     [Serializable()] 
     public class clsWorksList : List<clsWork>
     {
-        private static clsNameComparer theNameComparer = new clsNameComparer();
-        private static clsDateComparer theDateComparer = new clsDateComparer();
         private byte sortOrder;
 
         public byte SortOrder { get => sortOrder; set => sortOrder = value; }
@@ -56,12 +54,12 @@ namespace Version_1_C
 
          public void SortByName()
          {
-             Sort(theNameComparer);
+             Sort(clsNameComparer.NameCompare);
          }
     
         public void SortByDate()
         {
-            Sort(theDateComparer);
+            Sort(clsDateComparer.DateCompare);
         }
     }
 }

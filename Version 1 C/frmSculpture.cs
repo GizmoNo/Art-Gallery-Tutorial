@@ -11,8 +11,9 @@ namespace Version_1_C
     public partial class frmSculpture : Version_1_C.frmWork
     {
 
-        
-        public frmSculpture()
+        public static readonly frmSculpture Sculpture = new frmSculpture();
+
+        private frmSculpture()
         {
             InitializeComponent();
         }

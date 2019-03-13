@@ -11,7 +11,9 @@ namespace Version_1_C
     public partial class frmPhotograph : Version_1_C.frmWork
     {
 
-        public frmPhotograph()
+        public static readonly frmPhotograph Photograph = new frmPhotograph();
+
+        private frmPhotograph()
         {
             InitializeComponent();
         }
