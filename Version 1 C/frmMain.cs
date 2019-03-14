@@ -13,15 +13,20 @@ namespace Version_1_C
         /// <summary>
         /// Matthias Otto, NMIT, 2010-2016
         /// </summary>
-        public frmMain()
+        /// 
+
+        private static readonly frmMain _Instance = new frmMain();
+
+        private frmMain()
         {
             InitializeComponent();
         }
 
         private clsArtistList _ArtistList = new clsArtistList();
-        
 
-        private void updateDisplay()
+        public static frmMain Instance => _Instance;
+
+        public void UpdateDisplay()
         {
             string[] lcDisplayList = new string[_ArtistList.Count];
 
@@ -33,16 +38,8 @@ namespace Version_1_C
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            _ArtistList.NewArtist();
-            if(clsCheckErrorMsg.MsgTrue == true)
-            {
-                MessageBox.Show("Artist added!");
-            }
-            else
-            {
-                MessageBox.Show("Duplicate Key!");
-            }
-            updateDisplay();
+            frmArtist.Run(new clsArtist(_ArtistList));
+            
         }
 
         private void lstArtists_DoubleClick(object sender, EventArgs e)
@@ -52,16 +49,14 @@ namespace Version_1_C
             lcKey = Convert.ToString(lstArtists.SelectedItem);
             if (lcKey != null)
             {
-                _ArtistList.EditArtist(lcKey);
+                frmArtist.Run(_ArtistList[lcKey]);
+                
                 if(clsCheckErrorMsg.MsgTrue == false)
                 {
                     clsCheckErrorMsg.MsgTrue = true;
                     MessageBox.Show("Sorry no artist by this name");
                 }
-                              
-                updateDisplay();
-                
-                
+                           
             }
         }
 
@@ -88,7 +83,7 @@ namespace Version_1_C
             {
                 lstArtists.ClearSelected();
                 _ArtistList.Remove(lcKey);
-                updateDisplay();
+                UpdateDisplay();
             }
         }
 
@@ -101,7 +96,7 @@ namespace Version_1_C
             {
                 MessageBox.Show("File Retrieve Error");
             }
-            updateDisplay();
+            UpdateDisplay();
         }
     }
 }

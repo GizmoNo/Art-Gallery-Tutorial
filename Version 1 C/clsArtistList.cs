@@ -11,45 +11,28 @@ namespace Version_1_C
         private const string _FileName = "galleryV3.xml";
         
 
-        public void EditArtist(string prKey)
-        {
-            clsArtist lcArtist;
-            try
-            {
-                lcArtist = this[prKey];
-                if (lcArtist != null)
-                    lcArtist.EditDetails();
-            }
-            catch (Exception)
-            {
-                //MsgTrue = false;
-                clsCheckErrorMsg.MsgTrue = false;
-            }
+        //public void EditArtist(string prKey)
+        //{
+        //    clsArtist lcArtist;
+        //    try
+        //    {
+        //        lcArtist = this[prKey];
+        //        if (lcArtist != null)
+        //            lcArtist.EditDetails();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //MsgTrue = false;
+        //        clsCheckErrorMsg.MsgTrue = false;
+        //    }
            
             
                 
                 
                 
-        }
+        //}
        
-        public void NewArtist()
-        {
-            clsArtist lcArtist = new clsArtist(this);
-            try
-            {
-                if (lcArtist.Name != "")
-                {
-                    Add(lcArtist.Name, lcArtist);
-                    clsCheckErrorMsg.MsgTrue = true;
-                    
-                }
-            }
-            catch (Exception)
-            {
-                clsCheckErrorMsg.MsgTrue = false;
-                
-            }
-        }
+        
         
         public decimal GetTotalValue()
         {

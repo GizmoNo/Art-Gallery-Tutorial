@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Version_1_C
 {
@@ -14,13 +15,14 @@ namespace Version_1_C
         {
             InitializeComponent();
         }
+        private static Dictionary<clsArtist, frmArtist> _ArtistFormList = new Dictionary<clsArtist, frmArtist>();
         private clsArtist _Artist;
         private clsWorksList _WorksList;
        
 
         private void updateDisplay()
         {
-            txtName.Enabled = txtName.Text == "";
+            //txtName.Enabled = txtName.Text == "";
             if (_Artist.SortOrder == 0)
             {
                 _WorksList.SortByName();
@@ -35,14 +37,16 @@ namespace Version_1_C
             lstWorks.DataSource = null;
             lstWorks.DataSource = _WorksList;
             lblTotal.Text = Convert.ToString(_WorksList.GetTotalValue());
+            frmMain.Instance.UpdateDisplay();
         }
 
         public void SetDetails(clsArtist prArtist)
         {
             _Artist = prArtist;
+            txtName.Enabled = string.IsNullOrEmpty(_Artist.Name);
             updateForm();
             updateDisplay();
-            ShowDialog();
+            Show();
         }
                 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -66,11 +70,26 @@ namespace Version_1_C
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (isValid())
-            {
-                pushData();
-                DialogResult = DialogResult.OK;
-            }
+            if (isValid() == true)
+                try
+                {
+                    pushData();
+                    if (txtName.Enabled)
+                    {
+                        _Artist.NewArtist();
+                        MessageBox.Show("Artist Added!", "Success");
+                        frmMain.Instance.UpdateDisplay();
+                        txtName.Enabled = false;
+                    }
+                    Hide();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+                
+            
         }
 
         public virtual Boolean isValid()
@@ -122,6 +141,22 @@ namespace Version_1_C
             _Artist.Speciality = txtSpeciality.Text;
             _Artist.Phone = txtPhone.Text;
             _Artist.SortOrder = _WorksList.SortOrder;
+        }
+
+        public static void Run(clsArtist prArtist)
+        {
+            frmArtist lcArtistForm;
+            if(!_ArtistFormList.TryGetValue(prArtist, out lcArtistForm))
+            {
+                lcArtistForm = new frmArtist();
+                _ArtistFormList.Add(prArtist, lcArtistForm);
+                lcArtistForm.SetDetails(prArtist);
+            }
+            else
+            {
+                lcArtistForm.Show();
+                lcArtistForm.Activate();
+            }
         }
 
     }
