@@ -9,7 +9,10 @@ namespace Version_1_C
     {
 
         private const string _FileName = "galleryV3.xml";
-        
+
+        private string _GalleryName;
+
+        public string GalleryName { get => _GalleryName; set => _GalleryName = value; }
 
         //public void EditArtist(string prKey)
         //{
@@ -25,15 +28,15 @@ namespace Version_1_C
         //        //MsgTrue = false;
         //        clsCheckErrorMsg.MsgTrue = false;
         //    }
-           
-            
-                
-                
-                
+
+
+
+
+
         //}
-       
-        
-        
+
+
+
         public decimal GetTotalValue()
         {
             decimal lcTotal = 0;

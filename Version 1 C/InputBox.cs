@@ -25,16 +25,10 @@ namespace Version_1_C
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (txtAnswer.Text.Length > 0 && txtAnswer.Text.Length < 2)
-            {
-                _Answer = txtAnswer.Text;
-                DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-                lblError.Text = "Please enter one character into the text box.";
-            }
+                      
+             _Answer = txtAnswer.Text;
+             DialogResult = DialogResult.OK;
+                          
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
