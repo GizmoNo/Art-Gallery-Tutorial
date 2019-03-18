@@ -9,8 +9,10 @@ namespace Version_1_C
     public class clsWorksList : List<clsWork>
     {
         private byte sortOrder;
+        private string _ArtistName;
 
         public byte SortOrder { get => sortOrder; set => sortOrder = value; }
+        public string ArtistName { get => _ArtistName; set => _ArtistName = value; }
 
         public void AddWork(char prChoice)
         {

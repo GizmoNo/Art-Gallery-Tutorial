@@ -41,9 +41,10 @@ namespace Version_1_C
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmArtist.Run(new clsArtist(_ArtistList));
-            
+
         }
 
+      
         private void lstArtists_DoubleClick(object sender, EventArgs e)
         {
             string lcKey;

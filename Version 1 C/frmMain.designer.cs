@@ -84,6 +84,7 @@ namespace Version_1_C
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            
             // 
             // Label1
             // 

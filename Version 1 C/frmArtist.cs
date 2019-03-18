@@ -16,8 +16,11 @@ namespace Version_1_C
             InitializeComponent();
         }
         private static Dictionary<clsArtist, frmArtist> _ArtistFormList = new Dictionary<clsArtist, frmArtist>();
+        private static readonly string ArtistNameChangePrompt = "Enter a New Artist Name";
         private clsArtist _Artist;
         private clsWorksList _WorksList;
+        public delegate void Notify(string prArtistName);
+        public event Notify ArtistNameChanged;
        
 
         private void updateDisplay()
@@ -42,10 +45,13 @@ namespace Version_1_C
 
         public void SetDetails(clsArtist prArtist)
         {
+            
             _Artist = prArtist;
             txtName.Enabled = string.IsNullOrEmpty(_Artist.Name);
             updateForm();
             updateDisplay();
+            frmMain.Instance.GalleryNameChanged += new frmMain.Notify(updateTitle);
+            updateTitle(_Artist.ArtistList.GalleryName);
             Show();
         }
                 
@@ -159,5 +165,26 @@ namespace Version_1_C
             }
         }
 
+        private void updateTitle(string prGalleryName)
+        {
+            if (!string.IsNullOrEmpty(prGalleryName))
+                Text = "Artist Details -" + prGalleryName;
+        }
+
+        private void frmArtist_Load(object sender, EventArgs e)
+        {
+            ArtistNameChanged += new Notify(updateTitle);
+            ArtistNameChanged(_WorksList.ArtistName);
+        }
+
+        private void btnChangeArtistName_Click(object sender, EventArgs e)
+        {
+            string lcReply = new InputBox(ArtistNameChangePrompt).Answer;
+            if (!string.IsNullOrEmpty(lcReply))
+            {
+                _WorksList.ArtistName = lcReply;
+                ArtistNameChanged(_WorksList.ArtistName);
+            }
+        }
     }
 }
