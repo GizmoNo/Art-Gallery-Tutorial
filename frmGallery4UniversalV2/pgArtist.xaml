@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="frmGallery4UniversalV2.pgArtist"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:frmGallery4UniversalV2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock x:Name="txbGallery" HorizontalAlignment="Left" Margin="11,10,0,0" Text="My Gallery" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="txbArtist" HorizontalAlignment="Left" Margin="11,42,0,0" Text="Edit Artist" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48"/>
+        <TextBlock x:Name="txbName" HorizontalAlignment="Left" Margin="11,132,0,0" Text="Name:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.055,-1.333"/>
+        <TextBlock x:Name="txbSpeciality" HorizontalAlignment="Left" Margin="11,178,0,0" Text="Speciality:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.059,-1.8"/>
+        <TextBlock HorizontalAlignment="Left" Margin="12,232,0,0" Text="Phone:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="95,132,0,0" Text="" VerticalAlignment="Top" Width="289"/>
+        <TextBox x:Name="txtSpeciality" HorizontalAlignment="Left" Margin="95,178,0,0" Text="" VerticalAlignment="Top" Width="289"/>
+        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Margin="95,224,0,0" Text="" VerticalAlignment="Top" Width="289"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="297,280,0,0" VerticalAlignment="Top" Width="125" Height="74" FontSize="20" Click="BtnAdd_Click"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="297,359,0,0" VerticalAlignment="Top" Width="125" Height="80" FontSize="20" Click="BtnEdit_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="296,444,0,0" VerticalAlignment="Top" Width="124" Height="80" FontSize="20"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="297,529,0,0" VerticalAlignment="Top" Width="123" Height="81" FontSize="20" Click="BtnSave_Click"/>
+        <ScrollViewer x:Name="svMessages" HorizontalAlignment="Center" Margin="0,667,0,0" VerticalAlignment="Top" Width="410" Height="91">
+            <TextBlock x:Name="txbMessage"
+                       HorizontalAlignment="Stretch"
+                       TextWrapping="Wrap" Text="Messages"
+                       VerticalAlignment="Top" Width="329"/>
+            
+        </ScrollViewer>
+        <ListBox x:Name="lstArt" HorizontalAlignment="Left" Height="394" Margin="0,267,0,0" VerticalAlignment="Top" Width="292"/>
+
+    </Grid>
+</Page>

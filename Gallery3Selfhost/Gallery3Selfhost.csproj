@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{793D2DD7-BDEA-44E3-AB86-1099D494C573}</ProjectGuid>
+    <ProjectGuid>{FEA65092-ECB1-4A88-B5D2-ADB63F53E44A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Gallery3Selfhost</RootNamespace>
     <AssemblyName>Gallery3Selfhost</AssemblyName>
