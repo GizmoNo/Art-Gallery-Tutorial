@@ -22,7 +22,7 @@
         </ListBox>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="306,124,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.474,-3.861" Width="116" Click="BtnAdd_Click"/>
         <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="306,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.265,-6.042" Width="116" Click="BtnEdit_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="306,253,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.068,-0.503" Width="116"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="306,253,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.068,-0.503" Width="116" Click="BtnDelete_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,621,0,0" Text="Messagges" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-2.024,-3.432"/>
         <TextBlock x:Name="txbMessage" HorizontalAlignment="Left" Margin="10,644,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="416" FontFamily="Segoe UI"/>
 

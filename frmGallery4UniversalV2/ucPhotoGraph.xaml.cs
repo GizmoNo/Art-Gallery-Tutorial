@@ -39,7 +39,7 @@ namespace frmGallery4UniversalV2
             
             txtWidth.Text = prWork.Width.ToString();
             txtHeight.Text = prWork.Height.ToString();
-            txtType.Text = prWork.Type;
+            txtType.Text = prWork.Type.EmptyIfNull();
         }
     }
 }

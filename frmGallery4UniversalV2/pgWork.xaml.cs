@@ -45,7 +45,7 @@ namespace frmGallery4UniversalV2
         private void updatePage(clsAllWork prWork)
         {
             _Work = prWork;
-            txtName.Text = _Work.Name;
+            txtName.Text = _Work.Name.EmptyIfNull();
             txtDate.Text = _Work.Date.ToString("d");
             txtValue.Text = _Work.Value.ToString();
             txtName.IsEnabled = string.IsNullOrEmpty(_Work.Name);

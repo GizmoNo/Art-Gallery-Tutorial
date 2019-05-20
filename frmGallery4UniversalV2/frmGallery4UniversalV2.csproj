@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="clsUtil.cs" />
     <Compile Include="DTO.cs" />
     <Compile Include="IWorkControl.cs" />
     <Compile Include="pgArtist.xaml.cs">

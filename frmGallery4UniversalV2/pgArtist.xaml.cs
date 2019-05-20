@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -139,6 +140,23 @@ namespace frmGallery4UniversalV2
                 lcWork.ArtistName = _Artist.Name;
                 editWork(lcWork);
             };
+        }
+
+        private async void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if(lstArt.SelectedIndex >= 0)
+            {
+                MessageDialog lcMessageBox = new MessageDialog("Are you sure");
+                lcMessageBox.Commands.Add(new UICommand("Yes", async x =>
+                {
+                    txbMessage.Text += await ServiceClient.DeleteArtWorkAsync(
+                        lstArt.SelectedItem as clsAllWork) + '\n';
+                }));
+                lcMessageBox.Commands.Add(new UICommand("No"));
+                await lcMessageBox.ShowAsync();
+                _Artist = await ServiceClient.GetArtistAsync(_Artist.Name);
+                updateDisplay();
+            }
         }
     }
 }

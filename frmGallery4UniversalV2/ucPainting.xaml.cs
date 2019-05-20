@@ -39,7 +39,7 @@ namespace frmGallery4UniversalV2
             //clsPainting lcWork = (clsPainting)_Work;
             txtWidth.Text = prWork.Width.ToString();
             txtHeight.Text = prWork.Height.ToString();
-            txtType.Text = prWork.Type;
+            txtType.Text = prWork.Type.EmptyIfNull();
         }
             
     }

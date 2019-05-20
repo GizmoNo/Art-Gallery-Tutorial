@@ -35,7 +35,7 @@ namespace frmGallery4UniversalV2
         {
                                     
             txtWeight.Text = prWork.Weight.ToString();
-            txtMaterial.Text = prWork.Material;
+            txtMaterial.Text = prWork.Material.EmptyIfNull();
         }
     }
 }

@@ -19,7 +19,7 @@
         <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Margin="95,224,0,0" Text="" VerticalAlignment="Top" Width="289"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="297,280,0,0" VerticalAlignment="Top" Width="125" Height="74" FontSize="20" Click="BtnAdd_Click"/>
         <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="297,359,0,0" VerticalAlignment="Top" Width="125" Height="80" FontSize="20" Click="BtnEdit_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="296,444,0,0" VerticalAlignment="Top" Width="124" Height="80" FontSize="20"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="296,444,0,0" VerticalAlignment="Top" Width="124" Height="80" FontSize="20" Click="BtnDelete_Click"/>
         <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="297,529,0,0" VerticalAlignment="Top" Width="123" Height="81" FontSize="20" Click="BtnSave_Click"/>
         <ScrollViewer x:Name="svMessages" HorizontalAlignment="Center" Margin="0,667,0,0" VerticalAlignment="Top" Width="410" Height="91">
             <TextBlock x:Name="txbMessage"
